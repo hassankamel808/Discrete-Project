@@ -183,7 +183,45 @@ int main()
         cout << " -> Result: " << result << endl;
     }
 
+
+
+
+
+string original, simplified;
+cout << "Enter original expression: ";
+cin.ignore(); 
+getline(cin, original);
+
+cout << "Enter simplified expression: ";
+cin.ignore(); 
+getline(cin, simplified);
+
+
+original = removeSpace(original);
+simplified = removeSpace(simplified);
+
+
+bool equivalent = true;
+for(int row = 0; row < varsTable.size(); row++) {
+    int resOriginal = evaluate(original, gates, row);
+    int resSimplified = evaluate(simplified, gates, row);
+
+    if(resOriginal ^ resSimplified) {  
+        equivalent = false;
+        break;
     }
+}
+
+
+if(equivalent)
+    cout << "Equivalent expressions!" << endl;
+else
+    cout << "Not equivalent!" << endl;
+
+    }
+
+
+    
   
     
 
